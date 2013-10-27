@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# author : kosssi
+# inspirate : https://github.com/s-maeda/install.sh
+#
+
+CMD=$0
+source ~/.pkm/.config
+
+execute_scripts()
+{
+    for script in ${SCRIPTS[*]}
+    do
+        cmd bash ~/.pkm/scripts/${script}
+    done
+}
+
+remove_packages()
+{
+    cmd sudo apt-get -y -qq remove ${PKGS_UNINSTALL[@]}
+}
+
+install_packages()
+{
+    cmd sudo apt-get -y -qq install ${PKGS_INSTALL[@]}
+}
+
+copy_config()
+{
+    configs=( $(ls -ap ./${HOSTNAME} | grep -v '/$') )
+    for config_file in ${configs[*]}
+    do
+        cmd cp -Rf ${HOSTNAME}/${config_file} ${HOME}
+    done
+}
+
+cmd()
+{
+    cmd=$*
+    echo $cmd
+    eval $cmd
+}
+
+update()
+{
+    cmd sudo apt-get -y -qq update
+    cmd sudo apt-get -y -qq upgrade
+    cmd sudo apt-get -y -qq dist-upgrade
+}
+
+clean()
+{
+    cmd sudo apt-get -y -qq autoremove
+    cmd sudo apt-get -y -qq autoclean
+    cmd sudo apt-get -y -qq clean
+}
+
+update
+remove_packages
+install_packages
+#copy_config
+execute_scripts
+clean
