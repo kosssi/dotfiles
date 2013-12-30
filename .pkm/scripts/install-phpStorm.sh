@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIRECTORY=/opt/phpStorm
-VERSION=7.0
+VERSION=7.1
 
 if [ ! -d "${DIRECTORY}-${VERSION}" ]; then
     echo "[install] phpStorm"
