@@ -7,7 +7,12 @@ export PATH=$PATH:$HOME/bin
 ####
 # put any bash customizations in here
 
+alias uuu='composer self-update && cd $NVM_DIR && git pull && uu'
 alias uu='sudo apt-get update && sudo apt-get upgrade'
-alias cdp='cd ~/dev/projects/'
+alias cdp='cd $HOME/dev/projects/'
 alias debug='export XDEBUG_CONFIG="idekey=phpStorm-idekey"'
-export HOSTALIASES=~/.hosts
+
+export HOSTALIASES=$HOME/.hosts
+export RUBY=$HOME/.rvm/bin/ruby
+
+source $HOME/.rvm/scripts/rvm
