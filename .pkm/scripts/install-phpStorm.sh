@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIRECTORY=/opt/phpStorm
-VERSION=7.1.2
+VERSION=7.1.3
 
 if [ ! -d "${DIRECTORY}-${VERSION}" ]; then
 
